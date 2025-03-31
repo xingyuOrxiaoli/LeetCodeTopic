@@ -1,2 +1,3 @@
 # LeetCodeTopic
-Java questions on LeetCode (three questions per day) My homepage is https://leetcode.cn/u/xingyuorxiaoli/ 可以看发布的题解
+    使用Java在LeetCode写算法题的答案代码
+
