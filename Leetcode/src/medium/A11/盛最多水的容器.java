@@ -17,7 +17,6 @@ public class 盛最多水的容器 {
         // }
 
         // 因为从 i = 0 j  = length -1靠近 中这个矩阵的一条边再不断减少，因此靠近的过程中左右两条边谁最小谁移动
-
         int i = 0 ,j = length -1;
         while(i <=  j){
             int left = height[i];
@@ -30,7 +29,6 @@ public class 盛最多水的容器 {
                 do i ++ ; while(i < length && left >= height[i]);
             }
         }
-
         return res;
     }
 }
