@@ -19,7 +19,6 @@ public class 整数转罗马数字 {
                 res.append(tempch);
                 res.append(ch[i + 1]);
                 num -= (values[i+1] - tempvalue);
-
             }else if((i != 6 && num == 9) || (i != 0 && num / values[i -1] == 9)){
                 res.append(ch[i -1]);
                 res.append(ch[i + 1]);
