@@ -37,4 +37,25 @@ public class 电话号码的字母组合 {
             temp.deleteCharAt(index);
         }
     }
+
+
+    public List<String> letterCombinations2(String digits) {
+        List<String> res = new ArrayList<>();
+        if(digits == null || digits.length() == 0) return res;
+        letterCombinations(res,digits,0,new StringBuilder(digits.length()));
+        return res;
+    }
+
+    private void letterCombinations(List<String> res, String digits , int index , StringBuilder stringBuilder) {
+        if(index == digits.length()){
+            res.add(stringBuilder.toString());
+            return;
+        }
+        int temp = digits.charAt(index) - '2';
+        for(int i = 0 ; i < dict[temp].length ; i++){
+            stringBuilder.append(dict[temp][i]);
+            letterCombinations(res,digits,index+1,stringBuilder);
+            stringBuilder.deleteCharAt(index);
+        }
+    }
 }

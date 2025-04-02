@@ -4,9 +4,35 @@ import java.util.Arrays;
 
 public class 最接近的三数之和 {
     public static void main(String[] args) {
-        int[] nums = new int[]{-1,2,1,-4};
-        int i = new 最接近的三数之和().threeSumClosest(nums, 1);
+        int[] nums = new int[]{-84,92,26,19,-7,9,42,-51,8,30,-100,-13,-38};
+        int i = new 最接近的三数之和().threeSumClosest1(nums, 78);
         System.out.println(i);
+    }
+    public int threeSumClosest1(int[] nums, int target) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int res = Integer.MAX_VALUE ;
+        for(int i = 0  ; i < n - 2; i++){
+            int j = i + 1 , k = n - 1;
+            int pre = Math.abs(res - target) ;
+            int cur = Math.abs(target - nums[i] - nums[j] - nums[k]);
+            while(j < k){
+                if(cur <= pre) {
+                    res = nums[i] + nums[j] + nums[k];
+                }
+
+                pre = Math.min(pre, cur);
+                int temp = nums[i] + nums[j] + nums[k] - target ;
+                if(temp == 0) return target;
+                if(temp < 0) {
+                    j ++;
+                }else{
+                    k --;
+                }
+                cur = Math.abs(target - nums[i] - nums[j] - nums[k]);
+            }
+        }
+        return res;
     }
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
@@ -32,8 +58,6 @@ public class 最接近的三数之和 {
                 }
             }
         }
-
-
         return res;
     }
 }
