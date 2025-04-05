@@ -1,5 +1,7 @@
 package difficulty.A25;
 
+import java.util.List;
+
 public class K个一组翻转链表 {
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
@@ -8,7 +10,7 @@ public class K个一组翻转链表 {
             temp.next = new ListNode(i);
             temp = temp.next;
         }
-        new K个一组翻转链表().reverseKGroup(head,4);
+        new K个一组翻转链表().reverseKGroup2(head,4);
     }
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode[] node = new ListNode[k + 1];
@@ -51,6 +53,53 @@ public class K个一组翻转链表 {
             node[i] = next;
 
         }
+    }
+
+
+    public ListNode reverseKGroup2(ListNode head, int k) {
+        if(k == 1 || head == null) return head;
+        ListNode x = head;
+        ListNode pre = null;
+        ListNode[] cur = new ListNode[k + 1];
+        cur[0] = head;
+        for(int i = 1 ; i < k ; i++){
+            cur[i] = cur[i - 1].next;
+            if(cur[i] == null) break;
+        }
+        if(cur[k -1] == null) return head;
+        else head = cur[k - 1];
+
+        while(cur[k -1] != null){
+
+
+            int left = 0 , right = k - 1;
+            cur[left].next = cur[right].next;
+            while(left < right){
+                ListNode temp = cur[left];
+                cur[left] = cur[right];
+                cur[right] = temp;
+                left++;
+                right--;
+            }
+            for(int i = 1 ; i < k ; i++){
+                cur[i - 1].next = cur[i];
+            }
+
+            if(pre != null){
+                pre.next = cur[0];
+            }
+            pre = cur[k - 1];
+            cur[0] = pre.next;
+            if(cur[0] == null) break;
+            for(int i = 1 ; i < k ; i++){
+                cur[i] = cur[i -1].next;
+                if(cur[i] == null){
+                    cur[k - 1] = null;
+                    break;
+                }
+            }
+        }
+        return head;
     }
 }
 class ListNode {
