@@ -19,7 +19,7 @@ public class 通配符匹配 {
         for(int i = 1 ; i <= sLen ; i++) {
             for(int j = 1 ; j <= pLen ; j++) {
                 if(p.charAt(j - 1) == '*') {
-                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];//  为空 || 不为空
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1]; //  为空 || 不为空
                 }
                 if(p.charAt(j - 1) == '?' || p.charAt(j - 1) == s.charAt(i - 1)) {
                     dp[i][j] = dp[i - 1] [ j -1];
@@ -30,6 +30,6 @@ public class 通配符匹配 {
     }
 
     // 贪心
-    public boolean isMatch2(int[] nums) {
-    }
+//    public boolean isMatch2(int[] nums) {
+//    }
 }
