@@ -8,6 +8,10 @@ public class 缺失的第一个正数 {
         nums = new int[]{3,4,-1,1};
         i = new 缺失的第一个正数().firstMissingPositive2(nums);
         System.out.println(i);
+
+        nums = new int[]{1};
+        i = new 缺失的第一个正数().firstMissingPositive3(nums);
+        System.out.println(i);
     }
     // 方法1 打标签
     public int firstMissingPositive1(int[] nums) {
@@ -48,6 +52,17 @@ public class 缺失的第一个正数 {
        return n + 1;
     }
 
+    // 第二次写 TODO 类似 方法二
+    public int firstMissingPositive3(int[] nums) {
+        int n = nums.length;
+        boolean[] used = new boolean[n];
+        for(int i = 0; i < n; i++)
+            if(nums[i] >= 1 && nums[i] <= n && !used[nums[i] - 1])
+                used[nums[i] - 1] = true;
+        for(int i = 0; i < n; i++)
+            if(!used[i]) return i + 1;
+        return n + 1;
+    }
     private void swap(int[] nums, int i, int j) {
         nums[i] = nums[i] ^ nums[j];
         nums[j] = nums[j] ^ nums[i];
