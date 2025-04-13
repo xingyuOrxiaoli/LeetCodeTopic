@@ -30,7 +30,6 @@ public class 接雨水 {
     }
 
     // 方法二 单调栈  使用数组模拟栈
-
     public int trap2(int[] height) {
         int n = height.length;
         if(n < 3 ) return 0;

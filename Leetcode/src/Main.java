@@ -53,8 +53,50 @@ public class Main {
         System.out.println("中等难度题目 = " + medium);
         System.out.println("困难难度题目 = " + difficulty);
 
+        double[] dx = new double[]{5,10,15,20,30,40,50,60,70,90,120};
+        double[] dy = new double[]{6,10,10,13,16,17,19,23,25,29,46};
+        double x = 0 , y= 0 , xy = 0 , xx =  0 , yy = 0 ;
+        for(int i = 0 ; i < dx.length ; i++) x += dx[i];
+        for(int i = 0 ; i < dy.length ; i++) y += dy[i];
+        for(int i = 0 ; i < dx.length ; i++) xx += (dx[i] * dx[i]);
+        xx  = xx * 11 - x * x;
+        for(int i = 0 ; i < dx.length ; i++) xy += (dx[i] * dy[i]);
+        for(int i = 0 ; i < dx.length ; i++) yy += (dy[i] * dy[i]);
+        yy  = yy * 11 - y * y;
+        xy  = xy * 11 - x * y;
+        System.out.println(x);
+        System.out.println(xx);
+        System.out.println(xy);
+        System.out.println(yy);
+        System.out.println(y);
+        System.out.println(xy / xx );
+        System.out.println((214 * xx  - xy) / (xx * 11));
+        System.out.println((214 - (510 * xy / xx) )/ 11);
+        System.out.println(xy / (Math.sqrt(yy * xx)));
+        System.out.println((xy * xy) / (11 * xx)); // SR
+        System.out.println((yy / 11) - ((xy * xy) / (11 * xx)) ); // SE
+        System.out.println( (9 * ((xy * xy) / (11 * xx))) / ((yy / 11) - ((xy * xy) / (11 * xx))));
+        System.out.println(5.344432882414153 + 0.30433576135969476 * 50);
+        System.out.println(20.56122095039889 - 2.26 *(Math.sqrt(1 + 1 / 11 + ((11 * (50 - x / 11)*(50 - x / 11)) / xx))));
+        System.out.println(20.56122095039889 + 2.26 *(Math.sqrt(1 + 1 / 11 + ((11 * (50 - x / 11)*(50 - x / 11)) / xx))));
 
 
+        System.out.println(" ======================= ");
+        double t1 = 24.7 + 24.3 + 21.6 + 19.3 + 20.3;
+        double t2 = 30.8 + 19.0 + 18.8 + 29.7;
+        double t3 = 17.9 + 30.4 + 34.9 + 34.1 + 15.9 ;
+        double t4 = 23.1 + 33.0 + 23.0 + 26.4 + 18.1  + 25.1;
+
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
+        System.out.println(t4);
+        System.out.println(t1 / 5);
+        System.out.println(t2 / 4);
+        System.out.println(t3 / 5);
+        System.out.println(t4 / 6);
+
+        System.out.println();
     }
     private static List<Integer> getNoTopic(File file , List<Integer> list){
         list = new ArrayList<>();
