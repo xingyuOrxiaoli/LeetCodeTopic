@@ -1,4 +1,0 @@
-3
-true true false
-false true false
-false true true
