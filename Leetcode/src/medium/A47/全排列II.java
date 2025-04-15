@@ -1,6 +1,7 @@
 package medium.A47;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class 全排列II {
@@ -12,6 +13,7 @@ public class 全排列II {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
+        Arrays.sort(nums);
         dfs(0,nums.length,nums,used,new ArrayList<Integer>(),res);
 
         return res;
@@ -23,7 +25,7 @@ public class 全排列II {
             return;
         }
         for(int j = 0; j < length; j++){
-            if(used[j] || (i > 0 && nums[j] == nums[j - 1] && !used[j - 1])) continue;
+            if(used[j] || (j > 0 && nums[j] == nums[j - 1] && !used[j - 1])) continue;
             temp.add(nums[j]);
             used[j] = true;
             dfs(i+1,length,nums,used,temp,res);
