@@ -6,17 +6,12 @@ import java.util.List;
 public class 螺旋矩阵 {
     public static void main(String[] args) {
         int[][] matrix = {
-                {1,2,3,4},
-                {5,6,7,8},
-                {9,10,11,12},
-                {13,14,15,16},
-                {17,18,19,20},
-                {21,22,23,24}
+                {1}
         };
 //        matrix = new int[][]{
 //                {1},
 //        };
-        List<Integer> integers = new 螺旋矩阵().spiralOrder(matrix);
+        List<Integer> integers = new 螺旋矩阵().spiralOrder_2(matrix);
         System.out.println(integers);
     }
     public List<Integer> spiralOrder(int[][] matrix) {
@@ -37,6 +32,26 @@ public class 螺旋矩阵 {
                     n -- ;
                     m -- ;
                 }
+            }
+        }
+        return res;
+    }
+
+
+    // 练习二
+    public List<Integer> spiralOrder_2(int[][] matrix) {
+        List<Integer> res = new ArrayList<>();
+        int m = matrix.length , n =  matrix[0].length;
+        int i = 0 , j = 0 , k = 0;
+        while(i > -1 &&  i < m && j > -1 && j < n && matrix[i][j] != 101){
+            res.add(matrix[i][j]);
+            matrix[i][j] = 101;
+            if(i == k && j != n - 1 - k) j ++;
+            else if(j == n - k - 1 && i != m - 1 - k)  i++;
+            else if(i == m - k - 1 && j > k) j --;
+            else if(j == k){
+                i -- ;
+                if(i == k + 1 ) k ++;
             }
         }
         return res;
