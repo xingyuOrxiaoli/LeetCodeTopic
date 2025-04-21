@@ -40,7 +40,9 @@ public class 不同路径II {
         int i = new 不同路径II().uniquePathsWithObstacles2(obstacleGrid);
         System.out.println(i);
     }
-    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+
+    // DFS会超时
+    public int uniquePathsWithObstacles1(int[][] obstacleGrid) {
         if(obstacleGrid[0][0] == 1) return 0;
         int m = obstacleGrid.length , n = obstacleGrid[0].length;
         boolean[][] visited = new boolean[m][n];

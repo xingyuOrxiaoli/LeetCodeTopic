@@ -8,7 +8,7 @@ public class 排列序列 {
         for(int n = 1 ; n <= 9 ; n ++){
             for(int k = 1 ; k <= get(n) ; k++){
                 // 1,2,6,24,120,720,5040,40320,362880
-                String permutation = new 排列序列().getPermutation(n , k );
+                String permutation = new 排列序列().getPermutation_2(n , k );
                 String permutation1 = new Solution().getPermutation(n, k);
                 if(permutation.equals(permutation1)){
                     System.out.println("[INFO] 通过测试用例: n = " + n + ", k = " + k );
@@ -38,6 +38,21 @@ public class 排列序列 {
         for(int i = 2 ; i <= n ; i ++) res *=i;
         return res;
     }
+    // 练习2
+    public String getPermutation_2(int n, int k) {
+        int[] st = {0,1,2,6,24,120,720,5040,40320,362880};
+        int index;
+        StringBuilder dict = new StringBuilder("123456789") , res = new StringBuilder();
+        for(int i = 1 ; i <  n ; i ++){
+            index = (k - 1) / st[n - i];
+            res.append(dict.charAt(index));
+            dict.deleteCharAt(index);
+            k -= index * st[n - i];
+        }
+        res.append(dict.charAt(0));
+        return res.toString();
+    }
+
 }
 // LeetCode 官方题解
 class Solution {

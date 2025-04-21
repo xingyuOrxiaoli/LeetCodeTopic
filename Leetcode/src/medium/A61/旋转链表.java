@@ -3,8 +3,8 @@ package medium.A61;
 
 public class 旋转链表 {
     public static void main(String[] args) {
-        for(int k = 0 ; k <= 1e9 * 2 ; k ++) {
-            for (int i = 0; i <= 500; i++) {
+        for(int k = 2 ; k <= 1e9 * 2 ; k ++) {
+            for (int i = 3; i <= 500; i++) {
                 ListNode head = null;
                 ListNode tail = null;
                 ListNode temp1 = head;
@@ -23,12 +23,13 @@ public class 旋转链表 {
                     temp2 = temp2.next;
                 }
 
-                ListNode listNode = new 旋转链表().rotateRight(head, k);
+                ListNode listNode = new 旋转链表().rotateRight_2(head, k);
                 StringBuilder myres = getStringListNode(listNode);
                 StringBuilder leetcode = getStringListNode(new Solution().rotateRight(tail, k));
                 if (leetcode.toString().equals(myres.toString())) {
                     System.out.println( "[INFO] k =" + k + "通过测试用例 head = " + getStringListNode(head)+ "res = " + myres);
                 }else{
+                    myres = getStringListNode(listNode);
                     System.out.println( "[WARN] k =" + k + "未通过测试用例 head = " + getStringListNode(head)+ "res = " + myres + "leetcode = " + leetcode);
                     return;
                 }
@@ -67,6 +68,33 @@ public class 旋转链表 {
         right.next = head;
         head = left.next;
         left.next = null;
+        return head;
+    }
+
+    // 练习2
+    public ListNode rotateRight_2(ListNode head, int k) {
+        if(head == null || head.next == null) return head;
+        int n = 0 ;
+        ListNode temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            n ++;
+        }
+         k = k % n;
+        if(k == 0) return head;
+        ListNode pre = new ListNode() , end = head;
+        pre.next = head;
+        while(k != 1){
+            end = end.next;
+            k -- ;
+        }
+        while(end.next != null){
+            end = end.next;
+            pre= pre.next;
+        }
+        end.next = head;
+        head = pre.next;
+        pre.next = null;
         return head;
     }
 }
