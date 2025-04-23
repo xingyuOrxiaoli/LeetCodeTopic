@@ -24,5 +24,24 @@ public class 二进制求和 {
         if (t != 0) res.append(t);
         return res.reverse().toString();
     }
+    public String addBinary_2(String a, String b) {
+        if(a.length() < b.length()) return addBinary(b ,a);
+        int a_n = a.length() - 1 , b_n = b.length() - 1;
+        StringBuilder res = new StringBuilder();
+        int t = 0;
+        while(b_n > -1){
+            t += a.charAt(a_n--) - '0' + b.charAt(b_n) - '0';
+            res.append(t & 1);
+            t = t >> 1;
+        }
+        while(a_n > -1){
+            t += a.charAt(a_n--) - '0' ;
+            res.append(t & 1);
+            t = t >> 1;
+        }
+        if(t != 0) res.append(t & 1);
+
+        return res.reverse().toString();
+    }
 
 }
