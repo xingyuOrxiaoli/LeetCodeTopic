@@ -30,4 +30,27 @@ public class 简化路径 {
         if(res.length() == 0) res.append("/");
         return res.toString();
     }
+
+    // 练习 2
+    public String simplifyPath_2(String path) {
+        int n = path.length() , index = -1;
+        StringBuilder res = new StringBuilder(n);
+        String[] split = path.split("/");
+        int[] stack = new int[split.length];
+        for(String str : split){
+            if("".equals(str) || ".".equals(str)) continue;
+            if("..".equals(str)){
+                if(index == -1) continue;
+                res.delete(res.length() - stack[index--] - 1, res.length());
+            }else{
+                res.append("/");
+                res.append(str);
+                stack[++index] = str.length();
+            }
+        }
+        if(res.length() == 0) res.append("/");
+        return res.toString();
+    }
+
+
 }
