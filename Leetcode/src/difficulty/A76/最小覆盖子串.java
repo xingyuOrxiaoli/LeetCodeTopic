@@ -42,4 +42,24 @@ public class 最小覆盖子串 {
         }
         return res;
     }
+
+
+    // 第二次写
+    public String minWindow_2(String s, String t) {
+        int l =  0 , r = 0 , sum =  0;
+        int[] t_sum = new int[58]  , s_sum = new int[58]  , s_index = new int[s.length()] ;
+        for(int i = 0 ; i < t.length() ; i ++) t_sum[t.charAt(i) - 'A'] ++;
+        String res = "" ;
+        for(int i = 0  ; i < s.length() ; i++){
+            if(t_sum[s.charAt(i) - 'A'] == 0) continue;
+            if(t_sum[s.charAt(i) - 'A'] > s_sum[s.charAt(i) - 'A']) sum ++ ;
+            s_sum[s.charAt(i) - 'A'] ++;
+            s_index[r ++] = i;
+            if(sum == t.length()){
+                while(s_sum[s.charAt(s_index[l])  - 'A'] > t_sum[s.charAt(s_index[l])  - 'A']) s_sum[s.charAt(s_index[l++])  - 'A'] --;
+                if("".equals(res) || res.length() >= i - s_index[l] + 1) res = s.substring(s_index[l] , i + 1);
+            }
+        }
+        return res;
+    }
 }

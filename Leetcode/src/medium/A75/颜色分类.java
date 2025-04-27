@@ -21,4 +21,16 @@ public class 颜色分类 {
                 dict[i]--;
             }
     }
+
+    // 第二次写
+    public void sortColors_2(int[] nums) {
+        int[] dic = new int[3] ;
+        int index = 0 ;
+        for(int i = 0 ; i < nums.length ; i ++) dic[nums[i]] ++;
+        for(int i = 0 ; i < nums.length ; i ++){
+            if(dic[index] == 0) index ++;
+            nums[i] = index;
+            dic[index] -- ;
+        }
+    }
 }
