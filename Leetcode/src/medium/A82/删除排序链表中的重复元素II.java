@@ -18,21 +18,21 @@ public class 删除排序链表中的重复元素II {
         ListNode listNode = new 删除排序链表中的重复元素II().deleteDuplicates(head);
         System.out.println(listNode);
     }
-    public ListNode deleteDuplicates(ListNode head) {
-        if(head == null) return head;
-        ListNode cur = head, prev = new ListNode(-200, head) , res = null;
-        while(cur != null){
-            if(prev.val != cur.val && (cur.next == null || cur.next.val != cur.val)){
-                if(res == null) head = cur;
-                if(res != null) res.next = cur;
-                res = cur;
+        public ListNode deleteDuplicates(ListNode head) {
+            if(head == null) return head;
+            ListNode cur = head, prev = new ListNode(-200, head) , res = null;
+            while(cur != null){
+                if(prev.val != cur.val && (cur.next == null || cur.next.val != cur.val)){
+                    if(res == null) head = cur;
+                    if(res != null) res.next = cur;
+                    res = cur;
+                }
+                prev = cur;
+                cur = cur.next;
             }
-            prev = cur;
-            cur = cur.next;
+            if(res != null ) res.next = cur;
+            return head;
         }
-        if(res != null ) res.next = cur;
-        return head;
-    }
 }
 
 class ListNode {
