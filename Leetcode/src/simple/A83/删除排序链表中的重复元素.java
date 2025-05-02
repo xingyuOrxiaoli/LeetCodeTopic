@@ -26,6 +26,20 @@ public class 删除排序链表中的重复元素 {
         left.next = null;
         return head;
     }
+    public ListNode deleteDuplicates_2(ListNode head) {
+        if(head == null) return head;
+        ListNode pre = head , cur = head ,  temp = head;
+        while(cur != null){
+            if(cur.val != pre.val){
+                temp.next = cur;
+                temp = cur;
+            }
+            pre = cur;
+            cur = cur.next;
+        }
+        temp.next = null;
+        return head;
+    }
     
 
 }

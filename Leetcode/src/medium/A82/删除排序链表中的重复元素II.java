@@ -18,21 +18,43 @@ public class 删除排序链表中的重复元素II {
         ListNode listNode = new 删除排序链表中的重复元素II().deleteDuplicates(head);
         System.out.println(listNode);
     }
-        public ListNode deleteDuplicates(ListNode head) {
-            if(head == null) return head;
-            ListNode cur = head, prev = new ListNode(-200, head) , res = null;
-            while(cur != null){
-                if(prev.val != cur.val && (cur.next == null || cur.next.val != cur.val)){
-                    if(res == null) head = cur;
-                    if(res != null) res.next = cur;
-                    res = cur;
-                }
-                prev = cur;
-                cur = cur.next;
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null) return head;
+        ListNode cur = head, prev = new ListNode(-200, head) , res = null;
+        head = null;
+        while(cur != null){
+            if(prev.val != cur.val && (cur.next == null || cur.next.val != cur.val)){
+                if(res == null) head = cur;
+                if(res != null) res.next = cur;
+                res = cur;
             }
-            if(res != null ) res.next = cur;
-            return head;
+            prev = cur;
+            cur = cur.next;
         }
+        if(res != null ) res.next = cur;
+        return head;
+    }
+    public ListNode deleteDuplicates2(ListNode head) {
+        if(head == null) return head;
+        ListNode pre = new ListNode(-200 , head), cur = head , next = head.next , temp = null;
+        head = null;
+        while(cur != null){
+            if( !(cur.val == pre.val || (next != null && cur.val == next.val))){
+                if(head == null) {
+                    head = cur;
+                    temp = head;
+                }else{
+                    temp.next = cur;
+                    temp = cur;
+                }
+            }
+            pre = cur;
+            cur = cur.next;
+            if(cur != null) next = cur.next;
+        }
+        if(head != null ) temp.next = null;
+        return head;
+    }
 }
 
 class ListNode {
