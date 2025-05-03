@@ -1,6 +1,8 @@
 package medium.A86;
 
 
+import utils.ListNode;
+
 public class 分隔链表 {
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
@@ -31,11 +33,33 @@ public class 分隔链表 {
 
         return head;
     }
+    public ListNode partition2(ListNode head, int x) {
+        ListNode left = null , right = null , curL = null , curR = null;
+        while(head != null){
+            if(head.val < x){
+                if(left == null){
+                    left = head;
+                    curL = left;
+                }else{
+                    curL.next = head;
+                    curL = curL = head;
+                }
+            }else{
+                if(right == null){
+                    right = head;
+                    curR = right;
+                }else{
+                    curR.next = head;
+                    curR = head;
+                }
+            }
+            head = head.next;
+        }
+        if(left == null) return right;
+        if(right == null) return left;
+        curL.next = right ;
+        curR.next = null;
+        return left;
+    }
 }
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
+
