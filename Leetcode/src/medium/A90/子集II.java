@@ -21,7 +21,7 @@ public class 子集II {
         }
     }
 
-    Map<Long,Boolean> map = new HashMap<>();
+    Map<Double,Boolean> map = new HashMap<>();
     List<List<Integer>> res = new ArrayList<>();
     boolean[] visited ;
     public List<List<Integer>> subsetsWithDup(int[] nums) {
@@ -29,7 +29,7 @@ public class 子集II {
         dfs(nums,0,0,new ArrayList<Integer>());
         return res;
     }
-    private void dfs(int[] nums,int n,long value,List<Integer> list) {
+    private void dfs(int[] nums,int n,double value,List<Integer> list) {
         if(n > nums.length)  return;
         if(map.getOrDefault(value,true)) {
             map.put(value,false);
@@ -39,7 +39,7 @@ public class 子集II {
             if(!visited[i]) {
                 visited[i] = true;
                 list.add(nums[i]);
-                dfs(nums,i + 1, (long) (value + Math.pow(11,nums[i] + 10)),list);
+                dfs(nums,i + 1, (double) (value + Math.pow(11,nums[i] + 10)),list);
                 list.remove(list.size()-1);
                 visited[i] = false;
             }

@@ -16,11 +16,11 @@ public class 解码方法 {
         for(int i = 0; i < n; i++){
             if(s.charAt(i) != '0') dp[i + 1] = dp[i];
             else if(i != 0 && s.charAt(i -1) == '0') return 0;
-            if(i != 0 && check(s.charAt(i - 1) , s.charAt(i))) dp[i + 1] += dp[i - 1];
+            if(i != 0 && check(s.charAt(i -1) , s.charAt(i))) dp[i + 1] += dp[i - 1];
         }
         return dp[n];
     }
     private boolean check(char first ,char second){
-        return first != '0' && (first == '1' || (first == '2' && second <= '1'));
+        return first != '0' && (first == '1' || (first == '2' && second <= '6'));
     }
 }
