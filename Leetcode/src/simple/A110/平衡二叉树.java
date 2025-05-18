@@ -21,4 +21,19 @@ public class 平衡二叉树 {
         return Math.max(left, right) + 1;
     }
 
+
+    // 写法2
+    boolean res = true;
+    public boolean isBalanced2(TreeNode root) {
+        depth(root);
+        return res;
+    }
+
+    private int depth2(TreeNode root){
+        if(!res) return 0 ;
+        if(root  == null) return 0;
+        int left = depth(root.left) , right = depth(root.right);
+        if(Math.abs(left - right) > 1) res = false;
+        return Math.max(left,right) + 1;
+    }
 }

@@ -31,10 +31,7 @@ public class 路径总和II {
     }
 
     private void dfs(TreeNode root, int curSum, int targetSum, ArrayList<Integer> path) {
-
-
-        if (root == null || curSum > targetSum) return;
-
+        if (root == null || Math.abs(curSum) > Math.abs(targetSum)) return;
         curSum += root.val;
         path.add(root.val);
         if(curSum == targetSum && root.left == null && root.right == null){
@@ -47,6 +44,25 @@ public class 路径总和II {
         }
         if(root.right != null) {
             dfs(root.right, curSum, targetSum, path);
+            path.remove(path.size() - 1);
+        }
+    }
+
+    // 写法2
+    private void dfs(TreeNode root , int target , ArrayList<Integer> path){
+        if(root == null) return;
+        path.add(root.val);
+        target -= root.val;
+        if(target == 0 && root.left == null && root.right == null){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        if(root.left != null){
+            dfs(root.left, target , path);
+            path.remove(path.size() - 1);
+        }
+        if(root.right != null){
+            dfs(root.right, target , path);
             path.remove(path.size() - 1);
         }
     }
