@@ -2,6 +2,8 @@ package simple.A3024;
 
 import utils.ArrayUtils;
 
+import java.util.Arrays;
+
 public class 三角形类型 {
 
     public static void main(String[] args) {
@@ -11,6 +13,10 @@ public class 三角形类型 {
     }
 
     public String triangleType(int[] nums) {
-        return null;
+
+        if (nums[0] == nums[1] && nums[1] == nums[2]) return "equilateral";
+        else if(Arrays.stream(nums).sum() <= Arrays.stream(nums).max().getAsInt() * 2) return "none";
+        else if(nums[0] == nums[1] || nums[0] == nums[2] || nums[1] == nums[2]) return "isosceles";
+        else return "scalene";
     }
 }
