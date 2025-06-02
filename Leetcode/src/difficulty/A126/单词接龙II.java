@@ -32,7 +32,7 @@ public class 单词接龙II {
 
 
 
-    // 建立一个图
+    // 建立一个图  这题构建好图后，从起点开始找一定会超时，不能通过第33个测试用例，只能从终点向起点倒推，就离谱。
     int[][] edges ;
     Map<String,Integer> map = new HashMap<>();
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
@@ -74,18 +74,6 @@ public class 单词接龙II {
 
             for(int i = 0 ; i < edges.length && level + 1 <= min; i ++){
                 if(edges[cur][i] == 0 || visited[i]) continue;
-                ArrayList<String> strings = null;
-                try {
-                    strings = new ArrayList<>(pre_path);
-                }catch (Exception e){
-                    System.out.println(key );
-                    System.out.println("====");
-                    System.out.println(strings);
-                    paths.forEach((k , v) -> {
-                        System.out.println(k +"==" + v);
-                    });
-
-                }
                 List<String> next_path = new ArrayList<>(pre_path);
                 next_path.add(wordList.get(i - 1));
 
@@ -99,11 +87,8 @@ public class 单词接龙II {
                     levels.add(level + 1);
                 }
             }
-//            paths.remove(key);
             visited[cur] = true;
         }
-
-
         return res;
     }
 
