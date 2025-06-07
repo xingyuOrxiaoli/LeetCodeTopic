@@ -28,6 +28,7 @@ public class 加油站 {
                 m ++;
             }
             if(m == n) return i;
+            else i = i + m ;
         }
         return -1;
     }
