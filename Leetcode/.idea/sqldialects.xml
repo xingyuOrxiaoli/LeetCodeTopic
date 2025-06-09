@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/difficulty/a185/部门工资前三高的所有员工.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/medium/A176/第二高的薪水.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/medium/A177/第N高的薪水.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/medium/A178/分数排名.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/medium/A180/连续出现的数字.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/medium/A184/部门工资最高的员工.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/simple/A175/组合两个表.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/simple/A182/查找重复的电子邮箱.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/simple/A183/从不订购的客户.sql" dialect="MySQL" />
