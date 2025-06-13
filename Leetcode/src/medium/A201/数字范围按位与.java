@@ -5,6 +5,13 @@ public class 数字范围按位与 {
 
     }
     public int rangeBitwiseAnd(int left, int right) {
-        return (left & (right - 1)) | ((right - 1) & (right - 1));
+
+        int bit =  0;
+        while (left < right) {
+            left >>= 1;
+            right >>= 1;
+            bit ++;
+        }
+        return left << bit;
     }
 }
