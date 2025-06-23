@@ -15,7 +15,7 @@ insert into a180_连续出现的数字_Logs values
 
 
 select distinct
-    l1.num as `ConsecutiveNums `
+    l1.num as `ConsecutiveNums`
 from
     a180_连续出现的数字_Logs as l1,
     a180_连续出现的数字_Logs as l2,
