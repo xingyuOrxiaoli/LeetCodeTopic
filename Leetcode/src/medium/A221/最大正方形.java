@@ -34,7 +34,23 @@ public class 最大正方形 {
                 }
             }
         }
-
         return res * res;
     }
+
+    //    使用动态规划实现
+    public int maximalSquare_dp(char[][] matrix) {
+        int n = matrix.length , m = matrix[0].length ,res = 0;
+        int[][] dp = new int[n][m];
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = 0 ; j < m ; j ++){
+                if('1' == matrix[i][j]){
+                    if(i == 0 ||  j == 0) dp[i][j] = 1;
+                    else dp[i][j] = Math.min(dp[i - 1][j - 1] , Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
+                    res = Math.max(res, dp[i][j]);
+                }
+            }
+        }
+        return res * res;
+    }
+
 }
