@@ -43,7 +43,7 @@ public class 重复K次的最长子序列 {
 
         if(index == nums.length) return;
 
-        for()
+//        for()
 
 
     }
