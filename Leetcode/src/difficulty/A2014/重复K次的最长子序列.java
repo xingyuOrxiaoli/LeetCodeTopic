@@ -2,7 +2,6 @@ package difficulty.A2014;
 
 public class 重复K次的最长子序列 {
     public static void main(String[] args) {
-
     }
 
     char[] res ;
