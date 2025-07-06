@@ -11,7 +11,7 @@ public class 重复K次的最长子序列 {
         char[] chs = s.toCharArray();
         int[] counts = new int[n];
         for (int i = 0; i < n; i++) {
-            counts[chs[i] - 'a']++;
+            counts[chs                                                                                                  [i] - 'a']++;
         }
         StringBuilder temp = new StringBuilder();
         for(int i = 25 ; i > -1 ; i --){
