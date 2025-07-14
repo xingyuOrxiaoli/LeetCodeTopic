@@ -14,7 +14,7 @@ public class 同构字符串 {
         Arrays.fill(dict1, -1);
         Arrays.fill(dict2, -1);
         for(int i = 0; i < n; i++) {
-            int x = s.charAt(i) - 'a' , y = t.charAt(i) - 'a';
+            int x = s.charAt(i), y = t.charAt(i);
             if(dict1[x] == -1 && dict2[y] == -1) {
                 dict1[x] = i;
                 dict2[y] = i;
