@@ -1,110 +1,62 @@
 import utils.ArrayUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 class Solution {
-    public static void main(String[] args) {
-        int[][] arrayTwo = ArrayUtils.createArrayTwo("[[0,1],[1,2]]");
-        int i = new Solution().maxLen(3, arrayTwo, "aba");
-        System.out.println(i);
+
+    char ch ;
+    String str ;
+    Solution(){
+        System.out.println(str == null);
+        System.out.println(ch == ' ');
+        System.out.println(ch);
+        Integer a = -128;
+        Integer b = -128;
+        System.out.println(a == b);
     }
-    public String processStr(String s) {
-        StringBuilder res =  new StringBuilder();
-        int n  = s.length();
-        for(int i  = 0 ;i <  n ; i ++){
-            if(s.charAt(i) == '*'){
-                if(res.length() > 0){
-                    res.deleteCharAt(res.length()-1);
-                }
-            }else if(s.charAt(i) == '#'){
-                res.append(res.toString());
-            }else if(s.charAt(i) == '%'){
-                res.reverse();
-            }else res.append(s.charAt(i));
+    public static void main(String[] args) throws IOException {
+        new Solution();
+        List<Integer> haveTime , notHaveTime;
+        HashMap<Integer , List<Integer>> haveTimeMap = new HashMap<>() , notHaveTimeMap = new HashMap<>() ;
+        String path = "D:\\note\\ustb_xiaoli\\AQXJ\\first\\HDF\\data\\GEOQK";
+        File file = new File(path);
+        File[] listFiles = file.listFiles();
+        for (File listFile : listFiles) {
+            String fileName = listFile.getName();
+            String dateStr = fileName.split("_")[4];
+            haveTime = haveTimeMap.getOrDefault(Integer.parseInt(dateStr) , new ArrayList<>());
+            if(!haveTimeMap.containsKey(Integer.parseInt(dateStr))) haveTimeMap.put(Integer.parseInt(dateStr) , haveTime);
+            String timeStr = fileName.split("_")[5];
+            Integer curTime = Integer.parseInt(timeStr);
+            haveTime.add(curTime);
         }
 
-        return res.toString();
-    }
+        for (Integer key_date : haveTimeMap.keySet()) {
+            haveTime = haveTimeMap.get(key_date);
+            notHaveTime = notHaveTimeMap.getOrDefault(key_date, new ArrayList<>());
+            if(!notHaveTimeMap.containsKey(key_date)) haveTimeMap.put(key_date , haveTime);
 
-    public int minCost(int n, int[][] edges, int k) {
-        int res = 0 , count = n , index =  0 ;
-        int[] parent = new int[n ];
-        for(int i = 0 ; i < n ; i ++) parent[i] = i;
-        Arrays.sort(edges,(a,b) -> a[2] - b[2]);
-
-        while(count != k){
-            int x = edges[index][0] , y = edges[index][1];
-            int x_p = find(x, parent) , y_p = find(y, parent);
-            int p = Math.min(x_p, y_p);
-            y_p = Math.max(y_p, x_p);
-            if(p != y_p){
-                count --;
-                parent[y] = p;
-                parent[x] = p;
-                parent[p] = p;
-                parent[y_p] = p;
+            int min = 0 , hour = 0, left = 0;
+            while(hour != 23 || min != 55){
+                if(left < haveTime.size()&& haveTime.get(left).equals(hour * 100 + min)){
+                    left ++;
+                }else notHaveTime.add(hour * 100 + min);
+                min += 5;
+                hour += min / 60;
+                min %= 60;
             }
-            res = edges[index][2];
-            index ++;
-        }
-        return res;
-    }
-    private int find(int x , int[] parent){
-        if(parent[x] == x) return x;
-        parent[x] = find(parent[x], parent);
-        return parent[x];
-    }
-
-
-    public char processStr(String s, long k) {
-        String s1 = processStr(s);
-        if(s1.length() >= k) return s1.charAt((int) k);
-        return '.';
-    }
-
-    int[][] eds = new int[14][14];
-    int[] indexs = new int[14];
-    int res = 1;
-    boolean[][] visited = new boolean[1 << 14][14];  // visited[mask][last_node]
-
-    public int maxLen(int n, int[][] edges, String label) {
-        for (int[] e : edges) {
-            int u = e[0], v = e[1];
-            eds[u][indexs[u]++] = v;
-            eds[v][indexs[v]++] = u;
+            System.out.println("=================== 2025年"+key_date+"不包含的时间 ===================");
+            System.out.println(notHaveTime.size());
+            System.out.println(notHaveTime);
+//        notHaveTime.forEach(System.out::println);
+            System.out.println("=================== 2025年"+key_date+"包含的时间 ===================");
+            System.out.println(haveTime.size());
+            System.out.println(haveTime);
+//        haveTime.forEach(System.out::println);
         }
 
-        for (int i = 0; i < n; i++) {
-            List<Character> path = new ArrayList<>();
-            path.add(label.charAt(i));
-            dfs(i, 1 << i, path, label);
-        }
-
-        return res;
     }
 
-    private void dfs(int u, int mask, List<Character> path, String label) {
-        if (visited[mask][u]) return;
-        visited[mask][u] = true;
-
-        if (isValid(path)) res = Math.max(res, path.size());
-
-        for (int i = 0; i < indexs[u]; i++) {
-            int v = eds[u][i];
-            if ((mask & (1 << v)) == 0) {
-                path.add(label.charAt(v));
-                dfs(v, mask | (1 << v), path, label);
-                path.remove(path.size() - 1);
-            }
-        }
-    }
-
-    private boolean isValid(List<Character> path) {
-        int l = 0, r = path.size() - 1;
-        while (l < r) {
-            if (!path.get(l).equals(path.get(r))) return false;
-            l++; r--;
-        }
-        return true;
-    }
 }
