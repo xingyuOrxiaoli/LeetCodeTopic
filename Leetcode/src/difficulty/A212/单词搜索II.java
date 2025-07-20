@@ -15,6 +15,9 @@ public class 单词搜索II {
         };
 
         String[] words = {"oath","pea","eat","rain"};
+        List<String> words2 = new Solution().findWords(board, words);
+        System.out.println(words2);
+
         List<String> words1 = new 单词搜索II().findWords(board, words);
         System.out.println(words1);
 
@@ -106,4 +109,65 @@ class Trie{
     private void changeEnd() {
         this.isEnd =  true;
     }
+}
+class Solution {
+    class Trie{
+        boolean isEnd ;
+        Trie[] children;
+        String word;
+        public Trie(){
+            this.children = new Trie[26];
+            this.isEnd = false;
+            this.word = "";
+        }
+        public void insert(String word){
+            Trie cur = this;
+            for(char ch  : word.toCharArray()){
+                int index = ch - 'a';
+                if(cur.children[index] == null)
+                    cur.children[index] = new Trie();
+                // children[index].word = cur.word + ch;
+                System.out.println(index);
+                cur = cur.children[index];
+            }
+            cur.isEnd = true;
+            cur.word = word;
+        }
+    }
+    HashSet<String> set = new HashSet<>();
+    public List<String> findWords(char[][] board, String[] words) {
+        Trie root = new Trie();
+        for(String word : words){
+            root.insert(word);
+        }
+        int n = board.length , m = board[0].length;
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = 0 ; j < m ; j ++){
+                dfs(board , i , j,root);
+            }
+        }
+
+        List<String>  res = new ArrayList<>(set);
+        return res;
+    }
+    int[] dx = {1,-1, 0 ,0 } , dy = {0,0,1,-1};
+    private void dfs(char[][] board, int x , int y,Trie node){
+        char ch = board[x][y];
+        if(ch == 0) return ;
+        int n = board.length , m = board[0].length , index = ch - 'a';
+        if(node.children[index] == null) return ;
+        if(node.children[index].isEnd) set.add(node.children[index].word);
+
+         System.out.println(ch + " === " + node.isEnd);
+        board[x][y] = 0;
+        for(int i = 0 ; i <  4 ; i ++){
+            int new_x = dx[i] + x , new_y = dy[i] + y;
+            if(new_x > -1 && new_x < n && new_y > -1 && new_y < m && board[new_x][new_y] != 0) dfs(board ,new_x ,new_y,node.children[index]);
+        }
+
+
+        board[x][y] = ch;
+
+    }
+
 }

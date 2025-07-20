@@ -1,62 +1,96 @@
-import utils.ArrayUtils;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
-class Solution {
+public class Solution {
 
-    char ch ;
-    String str ;
-    Solution(){
-        System.out.println(str == null);
-        System.out.println(ch == ' ');
-        System.out.println(ch);
-        Integer a = -128;
-        Integer b = -128;
-        System.out.println(a == b);
-    }
-    public static void main(String[] args) throws IOException {
-        new Solution();
-        List<Integer> haveTime , notHaveTime;
-        HashMap<Integer , List<Integer>> haveTimeMap = new HashMap<>() , notHaveTimeMap = new HashMap<>() ;
-        String path = "D:\\note\\ustb_xiaoli\\AQXJ\\first\\HDF\\data\\GEOQK";
-        File file = new File(path);
-        File[] listFiles = file.listFiles();
-        for (File listFile : listFiles) {
-            String fileName = listFile.getName();
-            String dateStr = fileName.split("_")[4];
-            haveTime = haveTimeMap.getOrDefault(Integer.parseInt(dateStr) , new ArrayList<>());
-            if(!haveTimeMap.containsKey(Integer.parseInt(dateStr))) haveTimeMap.put(Integer.parseInt(dateStr) , haveTime);
-            String timeStr = fileName.split("_")[5];
-            Integer curTime = Integer.parseInt(timeStr);
-            haveTime.add(curTime);
-        }
+    public int countTrapezoids(int[][] points) {
+        int n = points.length;
+        if (n < 4) return 0;
 
-        for (Integer key_date : haveTimeMap.keySet()) {
-            haveTime = haveTimeMap.get(key_date);
-            notHaveTime = notHaveTimeMap.getOrDefault(key_date, new ArrayList<>());
-            if(!notHaveTimeMap.containsKey(key_date)) haveTimeMap.put(key_date , haveTime);
+        Map<String, Map<Long, Set<Integer>>> map = new HashMap<>();
 
-            int min = 0 , hour = 0, left = 0;
-            while(hour != 23 || min != 55){
-                if(left < haveTime.size()&& haveTime.get(left).equals(hour * 100 + min)){
-                    left ++;
-                }else notHaveTime.add(hour * 100 + min);
-                min += 5;
-                hour += min / 60;
-                min %= 60;
+        for (int i = 0; i < n; i++) {
+            int x1 = points[i][0], y1 = points[i][1];
+            for (int j = i + 1; j < n; j++) {
+                int x2 = points[j][0], y2 = points[j][1];
+                int dx = x2 - x1, dy = y2 - y1;
+
+                int t = gcd(Math.abs(dx), Math.abs(dy));
+                if (t != 0) {
+                    dx /= t;
+                    dy /= t;
+                }
+
+                if (dx < 0 || (dx == 0 && dy < 0)) {
+                    dx = -dx;
+                    dy = -dy;
+                }
+
+                long s = (long) dy * x1 - (long) dx * y1;
+                String key = dx + "_" + dy;
+
+                Map<Long, Set<Integer>> t_map = map.computeIfAbsent(key, k -> new HashMap<>());
+                Set<Integer> set = t_map.computeIfAbsent(s, k -> new HashSet<>());
+                set.add(i);
+                set.add(j);
             }
-            System.out.println("=================== 2025年"+key_date+"不包含的时间 ===================");
-            System.out.println(notHaveTime.size());
-            System.out.println(notHaveTime);
-//        notHaveTime.forEach(System.out::println);
-            System.out.println("=================== 2025年"+key_date+"包含的时间 ===================");
-            System.out.println(haveTime.size());
-            System.out.println(haveTime);
-//        haveTime.forEach(System.out::println);
         }
 
+        long res = 0;
+        for (Map<Long, Set<Integer>> inner : map.values()) {
+            long sum1 = 0,  sum2 = 0;
+            for (Set<Integer> set : inner.values()) {
+                int m = set.size();
+                if (m < 2) continue;
+                long t = comb2(m);
+                sum1 += t;
+                sum2 += t * t;
+            }
+            res += (sum1 * sum1 - sum2) / 2;
+        }
+
+        Map<String, List<int[]>> count_map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int x1 = points[i][0], y1 = points[i][1];
+            for (int j = i + 1; j < n; j++) {
+                int x2 = points[j][0], y2 = points[j][1];
+                String key = (x1 + x2) + "_" + (y1 + y2);
+                count_map.computeIfAbsent(key, k -> new ArrayList<>()).add(new int[]{i, j});
+            }
+        }
+        long t = 0;
+        for (List<int[]> list : count_map.values()) {
+            int k = list.size();
+            if (k < 2) continue;
+            long count = comb2(k);
+            Map<Integer, Integer> t_map = new HashMap<>();
+            for (int[] value : list) {
+                t_map.put(value[0], t_map.getOrDefault(value[0], 0) + 1);
+                t_map.put(value[1], t_map.getOrDefault(value[1], 0) + 1);
+            }
+
+            long count2 = 0;
+            for (int value : t_map.values()) {
+                if (value >= 2) {
+                    count2 += comb2(value);
+                }
+            }
+
+            t += (count - count2);
+        }
+
+        return (int) (res - t);
     }
 
+    private long comb2(int x) {
+        return x < 2 ? 0 : (long) x * (x - 1) / 2;
+    }
+
+    private int gcd(int a, int b) {
+        while (b != 0) {
+            int t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    }
 }
