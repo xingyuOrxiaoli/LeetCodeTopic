@@ -1,6 +1,8 @@
 package simple.A3487;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class 删除后的最大子数组元素和 {
     public static void main(String[] args) {
@@ -19,7 +21,19 @@ public class 删除后的最大子数组元素和 {
                 target = nums[i];
             }
         }
-
+        return res;
+    }
+    public int maxSum1(int[] nums) {
+        int n = nums.length  ,res = 0 , max = Integer.MIN_VALUE , count = 0;
+        HashSet<Integer> map = new HashSet<>();
+        for(int i  = 0 ; i <  n ; i++){
+            max = Math.max(max , nums[i]);
+            if(map.contains(nums[i]) || nums[i] <= 0) continue;
+            map.add(nums[i]);
+            res += nums[i];
+            count = 1;
+        }
+        if(count == 0) res = max;
         return res;
     }
 }
