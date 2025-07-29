@@ -12,18 +12,15 @@ public class 最长连续序列 {
     }
     public int longestConsecutive(int[] nums) {
         int res = 0 , temp = 0;
-        Map<Integer, Boolean> map = new TreeMap<>();
-        for (int num : nums) {
-            map.put(num, true);
-        }
-        for (Integer i : map.keySet()) {
+        Set<Integer> set = new TreeSet<>();
+        for (int num : nums) set.add(num);
+        for (Integer value : set) {
             temp ++;
-            if(!map.containsKey(i + 1)){
-                res = Math.max(res,temp);
-                temp = 0 ;
+            if(!set.contains(value + 1)){
+                res = Math.max(res, temp);
+                temp = 0;
             }
         }
-
         return res;
     }
 }
