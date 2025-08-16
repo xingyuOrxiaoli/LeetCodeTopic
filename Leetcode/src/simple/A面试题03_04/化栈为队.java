@@ -1,4 +1,4 @@
-package A面试题03_04;
+package simple.A面试题03_04;
 
 import java.util.Stack;
 
