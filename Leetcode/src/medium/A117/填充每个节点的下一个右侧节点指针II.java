@@ -26,6 +26,7 @@ public class 填充每个节点的下一个右侧节点指针II {
         levels.add(1);
         int preLevel = 1;
         Node preNode = null;
+
         while (!queue.isEmpty()) {
             Node curNode = queue.poll();
             Integer curLevel = levels.poll();
