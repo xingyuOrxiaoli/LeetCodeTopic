@@ -1,13 +1,12 @@
 package simple.A338;
 
+import java.util.Arrays;
+
 public class 比特位计数 {
     public static void main(String[] args) {
-
-    }
-    public int[] countBits(int n) {
-        int[] res = new int[n + 1];
-        for(int i  = 1 ; i <= n ; i++)
-            res[i] = res[i >> 1] + (i & 1);
-        return res;
+        int n = 10;
+        A338Solution solution = new A338SolutionMethodV1();
+        int[] res = solution.countBits(n);
+        System.out.println(Arrays.toString(res));
     }
 }
