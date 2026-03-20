@@ -75,7 +75,12 @@ public class CodeGenerator {
             return;
         }
         try(FileWriter fw = new FileWriter(javaFile)) {
-            String content = "package "+questionDir+"."+ targetPackage +";\n\n" + "public class "+targetQuestionName+" {\n" +
+            String content = "package "+questionDir+"."+ targetPackage +";\n\n" + "public class "+targetQuestionName+" {\n"
+                    +"    public static void main(String[] args) {\n" +
+                    "\n" +
+                    "        "+targetInterfaceName+" solution = new "+targetJavaClassName+"();\n" +
+                    "        solution.hammingDistance(4,1);\n" +
+                    "    }"+
                     "}";
             fw.write(content);
         } catch (IOException e) {
