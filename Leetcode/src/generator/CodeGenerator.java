@@ -23,13 +23,13 @@ public class CodeGenerator {
     private File targetDirectory;
 
     public CodeGenerator(String target_dir,String questionDir ,String questionNumber,String targetQuestionName) {
-        this.targetDir = target_dir;
-        this.questionDir = questionDir;
         this.targetPackage = "A"+questionNumber;
+        this.targetDir = target_dir+"\\"+targetPackage;
+        this.questionDir = questionDir;
         this.targetInterfaceName = this.targetPackage + "Solution";
         this.targetJavaClassName = this.targetInterfaceName + "MethodV1";
         this.targetKotlinClassName = this.targetPackage;
-        this.targetDirectory = new File(target_dir);
+        this.targetDirectory = new File(targetDir);
         this.targetQuestionName = targetQuestionName;
     }
 
@@ -80,7 +80,7 @@ public class CodeGenerator {
             return;
         }
         try(FileWriter fw = new FileWriter(javaFile)) {
-            String content = "package "+questionDir+questionDir+";\n" +
+            String content = "package "+questionDir+"."+targetPackage+";\n" +
                     "\n" +
                     "public interface "+targetInterfaceName+" {\n" +
                     "\n" +
@@ -102,7 +102,7 @@ public class CodeGenerator {
             return;
         }
         try(FileWriter fw = new FileWriter(javaFile)) {
-            String content = "package "+questionDir+questionDir+";\n" +
+            String content = "package "+questionDir+"."+targetPackage+";\n" +
                     "\n" +
                     "public class "+targetJavaClassName+"  implements "+targetInterfaceName+"{\n" +
                     "\n" +
@@ -124,9 +124,9 @@ public class CodeGenerator {
             return;
         }
         try(FileWriter fw = new FileWriter(javaFile)) {
-            String content = "package "+questionDir+questionDir+";\n" +
+            String content = "package "+questionDir+"."+targetPackage+";\n" +
                     "\n" +
-                    "class "+targetKotlinClassName+"  :  "+targetInterfaceName+"{\n" +
+                    "class MethodVersion1 :  "+targetInterfaceName+"{\n" +
                     "\n" +
                     "    \n" +
                     "\n" +
