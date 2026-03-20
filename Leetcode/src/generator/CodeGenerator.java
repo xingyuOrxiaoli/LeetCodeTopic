@@ -6,31 +6,29 @@ import java.io.IOException;
 
 public class CodeGenerator {
 
-    private String targetDir;
+    private final String questionDir;
 
-    private String questionDir;
+    private final String targetPackage;
 
-    private String targetPackage;
+    private final String targetInterfaceName;
 
-    private String targetInterfaceName;
+    private final String targetJavaClassName;
 
-    private String targetJavaClassName;
+    private final String targetKotlinClassName;
 
-    private String targetKotlinClassName;
+    private final String targetQuestionName;
 
-    private String targetQuestionName;
+    private final File targetDirectory;
 
-    private File targetDirectory;
+    private final String targetJavaInterfaceContent;
 
-    private String targetJavaInterfaceContent;
+    private final String targetJavaMethodContent;
 
-    private String targetJavaMethodContent;
-
-    private String targetKotlinMethodContent;
+    private final String targetKotlinMethodContent;
 
     public CodeGenerator(String target_dir,String questionDir ,String questionNumber,String targetQuestionName,String targetJavaMethodContent , String targetKotlinMethodContent) {
         this.targetPackage = "A"+questionNumber;
-        this.targetDir = target_dir+"\\"+targetPackage;
+        String targetDir = target_dir + "\\" + targetPackage;
         this.questionDir = questionDir;
         this.targetInterfaceName = this.targetPackage + "Solution";
         this.targetJavaClassName = this.targetInterfaceName + "MethodV1";
