@@ -22,7 +22,13 @@ public class CodeGenerator {
 
     private File targetDirectory;
 
-    public CodeGenerator(String target_dir,String questionDir ,String questionNumber,String targetQuestionName) {
+    private String targetJavaInterfaceContent;
+
+    private String targetJavaMethodContent;
+
+    private String targetKotlinMethodContent;
+
+    public CodeGenerator(String target_dir,String questionDir ,String questionNumber,String targetQuestionName,String targetJavaMethodContent , String targetKotlinMethodContent) {
         this.targetPackage = "A"+questionNumber;
         this.targetDir = target_dir+"\\"+targetPackage;
         this.questionDir = questionDir;
@@ -31,6 +37,13 @@ public class CodeGenerator {
         this.targetKotlinClassName = this.targetPackage;
         this.targetDirectory = new File(targetDir);
         this.targetQuestionName = targetQuestionName;
+        this.targetJavaInterfaceContent = "    "+ targetJavaMethodContent +";";
+        this.targetJavaMethodContent = "    @Override\n    "+targetJavaMethodContent+" {\n    }";
+        this.targetKotlinMethodContent = "    override "+ targetKotlinMethodContent+" {\n        TODO()\n    }";
+    }
+
+    public CodeGenerator(String target_dir,String questionDir ,String questionNumber,String targetQuestionName) {
+        this(target_dir,questionDir,questionNumber,targetQuestionName,"","");
     }
 
     public void generator() {
@@ -84,7 +97,7 @@ public class CodeGenerator {
                     "\n" +
                     "public interface "+targetInterfaceName+" {\n" +
                     "\n" +
-                    "    \n" +
+                    targetJavaInterfaceContent +
                     "\n" +
                     "}";
             fw.write(content);
@@ -106,7 +119,7 @@ public class CodeGenerator {
                     "\n" +
                     "public class "+targetJavaClassName+"  implements "+targetInterfaceName+"{\n" +
                     "\n" +
-                    "    \n" +
+                    targetJavaMethodContent +
                     "\n" +
                     "}";
             fw.write(content);
@@ -128,7 +141,7 @@ public class CodeGenerator {
                     "\n" +
                     "class MethodVersion1 :  "+targetInterfaceName+"{\n" +
                     "\n" +
-                    "    \n" +
+                    targetKotlinMethodContent +
                     "\n" +
                     "}";
             fw.write(content);
