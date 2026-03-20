@@ -48,7 +48,7 @@ public class CodeGenerator {
 
         if(!targetDirectory.exists()) {
             boolean isCreated = targetDirectory.mkdirs();
-            if(!isCreated) {
+            if(isCreated) {
                 System.out.println("创建目录成功" + targetDirectory.getName());
             }
         }
