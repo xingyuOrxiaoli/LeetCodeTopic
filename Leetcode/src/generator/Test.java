@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = "simple";
-        String questionNumber = "1886";
-        String targetQuestionName = "判断矩阵经轮转后是否一致";
-        String targetJavaMethodContent = "public boolean findRotation(int[][] mat, int[][] target)";
-        String targetKotlinMethodContent = "fun findRotation(mat: Array<IntArray>, target: Array<IntArray>): Boolean";
+        String questionNumber = "482";
+        String targetQuestionName = "密钥格式化";
+        String targetJavaMethodContent = "public String licenseKeyFormatting(String s, int k)";
+        String targetKotlinMethodContent = "fun licenseKeyFormatting(s: String, k: Int): String";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,

@@ -77,7 +77,6 @@ public class CodeGenerator {
                     +"    public static void main(String[] args) {\n" +
                     "\n" +
                     "        "+targetInterfaceName+" solution = new "+targetJavaClassName+"();\n" +
-                    "        solution.hammingDistance(4,1);\n" +
                     "    }"+
                     "}";
             fw.write(content);
