@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = "simple";
-        String questionNumber = "482";
-        String targetQuestionName = "密钥格式化";
-        String targetJavaMethodContent = "public String licenseKeyFormatting(String s, int k)";
-        String targetKotlinMethodContent = "fun licenseKeyFormatting(s: String, k: Int): String";
+        String questionNumber = "485";
+        String targetQuestionName = "最大连续1的个数";
+        String targetJavaMethodContent = "public int findMaxConsecutiveOnes(int[] nums)";
+        String targetKotlinMethodContent = "fun findMaxConsecutiveOnes(nums: IntArray): Int";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
