@@ -3,11 +3,11 @@ package generator;
 public class Test {
 
     public static void main(String[] args) {
-        String questionDir = "simple";
-        String questionNumber = "485";
-        String targetQuestionName = "最大连续1的个数";
-        String targetJavaMethodContent = "public int findMaxConsecutiveOnes(int[] nums)";
-        String targetKotlinMethodContent = "fun findMaxConsecutiveOnes(nums: IntArray): Int";
+        String questionDir = QuestionDir.MEDIUM;
+        String questionNumber = "1594";
+        String targetQuestionName = "矩阵的最大非负积";
+        String targetJavaMethodContent = "public int maxProductPath(int[][] grid)";
+        String targetKotlinMethodContent = "fun maxProductPath(grid: Array<IntArray>): Int";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
