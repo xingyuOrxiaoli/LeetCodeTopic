@@ -1,4 +1,4 @@
-package medium.A492;
+package simple.A492;
 
 public class A492SolutionMethodV1  implements A492Solution{
 

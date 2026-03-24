@@ -1,4 +1,4 @@
-package medium.A504;
+package simple.A504;
 
 public class 七进制数 {
     public static void main(String[] args) {

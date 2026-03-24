@@ -1,4 +1,4 @@
-package medium.A506;
+package simple.A506;
 
 import java.util.*
 

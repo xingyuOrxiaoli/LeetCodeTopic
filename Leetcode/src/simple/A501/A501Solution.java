@@ -1,4 +1,4 @@
-package medium.A501;
+package simple.A501;
 
 import utils.TreeNode;
 

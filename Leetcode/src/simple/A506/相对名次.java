@@ -1,4 +1,4 @@
-package medium.A506;
+package simple.A506;
 
 public class 相对名次 {
     public static void main(String[] args) {

@@ -1,6 +1,5 @@
-package medium.A501;
+package simple.A501;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import utils.TreeNode;
 
 import java.util.ArrayList;

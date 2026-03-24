@@ -1,4 +1,4 @@
-package medium.A506;
+package simple.A506;
 
 public class A506SolutionMethodV1  implements A506Solution{
 

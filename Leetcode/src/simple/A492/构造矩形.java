@@ -1,4 +1,4 @@
-package medium.A492;
+package simple.A492;
 
 public class 构造矩形 {
     public static void main(String[] args) {

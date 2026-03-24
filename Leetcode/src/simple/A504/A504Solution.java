@@ -1,4 +1,4 @@
-package medium.A504;
+package simple.A504;
 
 public interface A504Solution {
 

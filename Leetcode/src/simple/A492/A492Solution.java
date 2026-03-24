@@ -1,4 +1,4 @@
-package medium.A492;
+package simple.A492;
 
 public interface A492Solution {
 

@@ -1,4 +1,4 @@
-package medium.A504;
+package simple.A504;
 
 import kotlin.math.abs
 
