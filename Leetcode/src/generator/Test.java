@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.MEDIUM;
-        String questionNumber = "506";
-        String targetQuestionName = "相对名次";
-        String targetKotlinMethodContent = "fun findRelativeRanks(score: IntArray): Array<String>";
-        String targetJavaMethodContent = "public String[] findRelativeRanks(int[] score)";
+        String questionNumber = "504";
+        String targetQuestionName = "七进制数";
+        String targetKotlinMethodContent = "fun convertToBase7(num: Int): String";
+        String targetJavaMethodContent = "public String convertToBase7(int num)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
