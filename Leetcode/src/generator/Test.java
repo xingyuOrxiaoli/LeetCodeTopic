@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.MEDIUM;
-        String questionNumber = "2906";
-        String targetQuestionName = "构造乘积矩阵";
-        String targetKotlinMethodContent = "fun constructProductMatrix(grid: Array<IntArray>): Array<IntArray>";
-        String targetJavaMethodContent = " public int[][] constructProductMatrix(int[][] grid)";
+        String questionNumber = "3546";
+        String targetQuestionName = "等和矩阵分割I";
+        String targetKotlinMethodContent = "fun canPartitionGrid(grid: Array<IntArray>): Boolean";
+        String targetJavaMethodContent = "public boolean canPartitionGrid(int[][] grid)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
