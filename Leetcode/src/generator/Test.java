@@ -3,11 +3,11 @@ package generator;
 public class Test {
 
     public static void main(String[] args) {
-        String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "507";
-        String targetQuestionName = "完美数";
-        String targetKotlinMethodContent = "fun checkPerfectNumber(num: Int): Boolean";
-        String targetJavaMethodContent = "public boolean checkPerfectNumber(int num)";
+        String questionDir = QuestionDir.DIFFICULTY;
+        String questionNumber = "3548";
+        String targetQuestionName = "等和矩阵分割II";
+        String targetKotlinMethodContent = "fun canPartitionGrid(grid: Array<IntArray>): Boolean";
+        String targetJavaMethodContent = "public boolean canPartitionGrid(int[][] grid)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
