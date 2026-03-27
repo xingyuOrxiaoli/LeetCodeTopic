@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "541";
-        String targetQuestionName = "反转字符串II";
-        String targetKotlinMethodContent = "fun reverseStr(s: String, k: Int): String";
-        String targetJavaMethodContent = "public String reverseStr(String s, int k)";
+        String questionNumber = "543";
+        String targetQuestionName = "二叉树的直径";
+        String targetKotlinMethodContent = "fun diameterOfBinaryTree(root: TreeNode?): Int";
+        String targetJavaMethodContent = "public int diameterOfBinaryTree(TreeNode root)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,

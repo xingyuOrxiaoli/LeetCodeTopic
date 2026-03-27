@@ -2,8 +2,10 @@ package simple.A543;
 
 import utils.TreeNode;
 
-public class 二叉树的直径 {
+public class A543SolutionMethodV1  implements A543Solution{
+
     int res = 0;
+    @Override
     public int diameterOfBinaryTree(TreeNode root) {
         dfs(root);
         return res;
