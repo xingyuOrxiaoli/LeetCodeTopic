@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "2839";
-        String targetQuestionName = "判断通过操作能否让字符串相等I";
-        String targetKotlinMethodContent = "fun canBeEqual(s1: String, s2: String): Boolean";
-        String targetJavaMethodContent = " public boolean canBeEqual(String s1, String s2)";
+        String questionNumber = "559";
+        String targetQuestionName = "N叉树的最大深度";
+        String targetKotlinMethodContent = "fun maxDepth(root: Node?): Int";
+        String targetJavaMethodContent = "public int maxDepth(Node root)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
