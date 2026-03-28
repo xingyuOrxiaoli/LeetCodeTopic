@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "557";
-        String targetQuestionName = "反转字符串中的单词III";
-        String targetKotlinMethodContent = "fun reverseWords(s: String): String";
-        String targetJavaMethodContent = "public String reverseWords(String s)";
+        String questionNumber = "551";
+        String targetQuestionName = "学生出勤记录I";
+        String targetKotlinMethodContent = "fun checkRecord(s: String): Boolean";
+        String targetJavaMethodContent = "public boolean checkRecord(String s)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
