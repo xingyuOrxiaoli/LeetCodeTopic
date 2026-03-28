@@ -3,11 +3,11 @@ package generator;
 public class Test {
 
     public static void main(String[] args) {
-        String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "543";
-        String targetQuestionName = "二叉树的直径";
-        String targetKotlinMethodContent = "fun diameterOfBinaryTree(root: TreeNode?): Int";
-        String targetJavaMethodContent = "public int diameterOfBinaryTree(TreeNode root)";
+        String questionDir = QuestionDir.DIFFICULTY;
+        String questionNumber = "2573";
+        String targetQuestionName = "找出对应LCP矩阵的字符串";
+        String targetKotlinMethodContent = "fun findTheString(lcp: Array<IntArray>): String";
+        String targetJavaMethodContent = "public String findTheString(int[][] lcp)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
