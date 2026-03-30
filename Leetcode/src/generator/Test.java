@@ -3,11 +3,11 @@ package generator;
 public class Test {
 
     public static void main(String[] args) {
-        String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "566";
-        String targetQuestionName = "重塑矩阵";
-        String targetKotlinMethodContent = "fun matrixReshape(mat: Array<IntArray>, r: Int, c: Int): Array<IntArray>";
-        String targetJavaMethodContent = "public int[][] matrixReshape(int[][] mat, int r, int c)";
+        String questionDir = QuestionDir.MEDIUM;
+        String questionNumber = "2840";
+        String targetQuestionName = "判断通过操作能否让字符串相等II";
+        String targetKotlinMethodContent = "fun checkStrings(s1: String, s2: String): Boolean";
+        String targetJavaMethodContent = "public boolean checkStrings(String s1, String s2)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
