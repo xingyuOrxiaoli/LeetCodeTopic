@@ -1,6 +1,20 @@
 package difficulty.A329;
 
+import medium.A2840.A2840Solution;
+
 public class 矩阵中的最长递增路径 {
+
+
+    public static void main(String[] args) {
+        int[][] matrix = new int[][]{
+                {1,2},
+                {2,3}
+        };
+        A329Solution solution = new A329SolutionMethodV2();
+        solution.longestIncreasingPath(matrix);
+    }
+
+
     int res = 0;
     boolean[][] visited = new boolean[200][200];
     int[][] dp = new int[200][200];

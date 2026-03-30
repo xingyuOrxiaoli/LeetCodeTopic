@@ -3,11 +3,11 @@ package generator;
 public class Test {
 
     public static void main(String[] args) {
-        String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "572";
-        String targetQuestionName = "另一棵树的子树";
-        String targetKotlinMethodContent = "fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean";
-        String targetJavaMethodContent = "public boolean isSubtree(TreeNode root, TreeNode subRoot)";
+        String questionDir = QuestionDir.DIFFICULTY;
+        String questionNumber = "329";
+        String targetQuestionName = "矩阵中的最长递增路径";
+        String targetKotlinMethodContent = "fun longestIncreasingPath(matrix: Array<IntArray>): Int";
+        String targetJavaMethodContent = "public int longestIncreasingPath(int[][] matrix)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
