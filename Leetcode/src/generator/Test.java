@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.DIFFICULTY;
-        String questionNumber = "329";
-        String targetQuestionName = "矩阵中的最长递增路径";
-        String targetKotlinMethodContent = "fun longestIncreasingPath(matrix: Array<IntArray>): Int";
-        String targetJavaMethodContent = "public int longestIncreasingPath(int[][] matrix)";
+        String questionNumber = "3474";
+        String targetQuestionName = "字典序最小的生成字符串";
+        String targetKotlinMethodContent = "fun generateString(str1: String, str2: String): String";
+        String targetJavaMethodContent = "public String generateString(String str1, String str2)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
