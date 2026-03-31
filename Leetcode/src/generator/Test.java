@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "680";
-        String targetQuestionName = "验证回文串II";
+        String questionNumber = "697";
+        String targetQuestionName = "数组的度";
         String targetKotlinMethodContent = "fun findSecondMinimumValue(root: TreeNode?): Int";
-        String targetJavaMethodContent = "public boolean validPalindrome(String s)";
+        String targetJavaMethodContent = "public int findShortestSubArray(int[] nums)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
