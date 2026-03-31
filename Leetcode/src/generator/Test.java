@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "671";
-        String targetQuestionName = "二叉树中第二小的节点";
+        String questionNumber = "674";
+        String targetQuestionName = "最长连续递增序列";
         String targetKotlinMethodContent = "fun findSecondMinimumValue(root: TreeNode?): Int";
-        String targetJavaMethodContent = "public int findSecondMinimumValue(TreeNode root)";
+        String targetJavaMethodContent = "public int findLengthOfLCIS(int[] nums)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
@@ -17,7 +17,7 @@ public class Test {
                 targetJavaMethodContent,
                 targetKotlinMethodContent
         );
-        generator.generator();
+        generator.generator(true,false);
     }
 
 }
