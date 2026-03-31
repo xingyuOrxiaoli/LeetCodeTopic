@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "605";
-        String targetQuestionName = "种花问题";
-        String targetKotlinMethodContent = "fun canPlaceFlowers(flowerbed: IntArray, n: Int): Boolean";
-        String targetJavaMethodContent = "public boolean canPlaceFlowers(int[] flowerbed, int n)";
+        String questionNumber = "617";
+        String targetQuestionName = "合并二叉树";
+        String targetKotlinMethodContent = "fun mergeTrees(root1: TreeNode?, root2: TreeNode?): TreeNode?";
+        String targetJavaMethodContent = "public TreeNode mergeTrees(TreeNode root1, TreeNode root2)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
