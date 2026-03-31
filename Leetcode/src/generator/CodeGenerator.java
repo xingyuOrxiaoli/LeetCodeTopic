@@ -45,7 +45,10 @@ public class CodeGenerator {
     }
 
     public void generator() {
+        this.generator(true,true);
+    }
 
+    public void generator(boolean isJava , boolean isKotlin) {
         if(!targetDirectory.exists()) {
             boolean isCreated = targetDirectory.mkdirs();
             if(isCreated) {
@@ -55,14 +58,18 @@ public class CodeGenerator {
 
         generatorJavaQuestion();
         generateJavaInterface();
-        generateJavaInterfaceImpl();
-        generateKotlinInterface();
+        if(isJava) {
+            generateJavaInterfaceImpl();
+        }
+        if(isKotlin) {
+            generateKotlinInterface();
+        }
 
 
         showDirFile();
         showGenerateCodeFile();
-    }
 
+    }
 
     /**
      * 生成题目Java类
