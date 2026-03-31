@@ -4,10 +4,10 @@ public class Test {
 
     public static void main(String[] args) {
         String questionDir = QuestionDir.SIMPLE;
-        String questionNumber = "653";
-        String targetQuestionName = "两数之和IV_输入二叉搜索树";
-        String targetKotlinMethodContent = "fun findTarget(root: TreeNode?, k: Int): Boolean";
-        String targetJavaMethodContent = "public boolean findTarget(TreeNode root, int k)";
+        String questionNumber = "657";
+        String targetQuestionName = "机器人能否返回原点";
+        String targetKotlinMethodContent = "fun judgeCircle(moves: String): Boolean";
+        String targetJavaMethodContent = "public boolean judgeCircle(String moves)";
 
         CodeGenerator generator = new CodeGenerator(
                 "D:\\note\\github\\LeetCodeTopic\\Leetcode\\src\\"+questionDir,
