@@ -1,48 +1,73 @@
-import java.util.Arrays;
+    import java.util.*;
 
-class Solution {
-    public int maximumScore(int[] cards, int cnt) {
-        int n = cards.length , res = 0 , minOdd = 0 , minEven = 0 ;
-        Arrays.sort(cards);
-        for(int i = n - 1 ; i >= n - cnt ; i--) {
-            if ((cards[i] & 1) == 1) {
-                minOdd = cards[i];
-            } else {
-                minEven = cards[i];
-            }
-            res += cards[i];
+    class LRUCache {
+        class Node {
+            int key;
+            int value;
+            Node next;
+            Node prev;
         }
-        if ((res & 1) == 1) {
-            int maxOdd = 0 , maxEven = 0 , t = res;
-            for (int i = 0 ; i < n - cnt ; i ++) {
-                if ((cards[i] & 1) == 1) {
-                    maxOdd = cards[i];
-                } else {
-                    maxEven = cards[i];
-                }
+        private int capacity;
+        private final Map<Integer, Node> map = new HashMap<>();
+        private Node head = new Node();
+        private int size;
+
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.head.prev = head;
+            this.head.next = head;
+        }
+
+        public int get(int key) {
+            if (!map.containsKey(key)) {
+                return -1;
             }
-            // 删除奇数 添加 偶数
-            int cur1 = 0;
-            if (minOdd != 0 && maxEven != 0) {
-                cur1 = t - minOdd + maxEven;
-                res = cur1;
+            Node node = map.get(key);
+            remove(node);
+            pushFront(node);
+            return node.value;
+        }
+
+        public void put(int key, int value) {
+            get(key);
+            if (map.containsKey(key)) {
+                map.get(key).value = value;
+                return;
             }
-            // 删除偶数 添加奇数
-            if (minEven != 0 && maxOdd != 0) {
-                if (minOdd != 0 && maxEven != 0) {
-                    res = Math.max(res, t - minEven + maxOdd);
-                } else {
-                    res = t - minEven + maxOdd;
-                }
-            }
-            if (t == res) {
-                res = 0;
+            Node node = new Node();
+            node.key = key;
+            node.value = value;
+            pushFront(node);
+            map.put(key, node);
+            if (map.size() > capacity) {
+                Node prev = head.prev;
+                map.remove(prev.key);
+                remove(prev);
             }
         }
-        return res;
+
+        private void pushFront(Node node) {
+            node.prev = head;
+            node.next = head.next;
+            head.next = node;
+            node.next.prev = node;
+        }
+
+
+        private void remove(Node node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+
+        public static void main(String[] args) {
+            new LRUCache(2);
+        }
     }
 
-    public static void main(String[] args) {
-        new Solution().maximumScore(new int[]{9,5,9,1,6,10,3,4,5,1}, 2);
-    }
-}
+    /**
+     * Your LRUCache object will be instantiated and called as such:
+     * LRUCache obj = new LRUCache(capacity);
+     * int param_1 = obj.get(key);
+     * obj.put(key,value);
+     */
+

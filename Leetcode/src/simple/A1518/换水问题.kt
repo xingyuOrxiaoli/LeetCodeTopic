@@ -1,6 +1,5 @@
 package simple.A1518
 
-import jdk.nashorn.internal.objects.Global.println
 
 object 换水问题 {
     fun numWaterBottles(numBottles: Int, numExchange: Int): Int {
