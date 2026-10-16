@@ -11,6 +11,7 @@ public class Main{
         try {
             int T = Integer.parseInt(br.readLine());
             while (T -- > 0) {
+
                 String s = br.readLine();
                 String[] split = s.split(" ");
                 int n = Integer.parseInt(split[0]);
